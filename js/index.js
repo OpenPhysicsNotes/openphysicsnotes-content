@@ -1,5 +1,5 @@
 
-var index_elements = []
+var index_elementss = []
 
 var id_counter = 0
 
@@ -29,34 +29,43 @@ function make_index() {
 	/** @var {HTMLElement | Null} article ciao */
 	let article = document.getElementsByTagName("article")[0]
 	
-	let index = document.getElementsByTagName("lc-nav-index")[0]
-	index.innerHTML = ""
-	let index_a = document.createElement("aside")
-	index.appendChild(index_a)
-	index_a.innerHTML += "<h3>In this article</h3>"
-	index_elements = []
+	let indexes = document.getElementsByTagName("lc-nav-index");
 
-	//let cc = article.querySelectorAll("h2, h3")
-	// see https://stackoverflow.com/questions/3680876/using-queryselectorall-to-retrieve-direct-children
-	let cc = article.querySelectorAll(":scope > h2, :scope >  h3")
-	for (let c of cc) {
-		e = document.createElement("li")
-		a = document.createElement("a")
-		e.appendChild(a)
-		a.innerHTML = c.innerHTML
-		a.setAttribute("href", "#" + element_id(c))
-		e.data_element = c
-		c.data_index_element = e
-		index_a.appendChild(e)
-		index_elements.push(e)
-		//e.addEventListener("click", function() {
-		//    window.scrollTo(c.getBoundingClientRect().x, c.getBoundingClientRect().y);
-		//})
+	index_elementss = [];
 
-		if (c.tagName == "H3") {
-			e.className = "sub"
+	for (let index of indexes) {
+		//let index = indexes[i];
+
+		index.innerHTML = ""
+		let index_a = document.createElement("aside")
+		index.appendChild(index_a)
+		index_a.innerHTML += "<h3>In this article</h3>"
+		let index_elements = []
+
+		//let cc = article.querySelectorAll("h2, h3")
+		// see https://stackoverflow.com/questions/3680876/using-queryselectorall-to-retrieve-direct-children
+		let cc = article.querySelectorAll(":scope > h2, :scope >  h3")
+		for (let c of cc) {
+			e = document.createElement("li")
+			a = document.createElement("a")
+			e.appendChild(a)
+			a.innerHTML = c.innerHTML
+			a.setAttribute("href", "#" + element_id(c))
+			e.data_element = c
+			c.data_index_element = e
+			index_a.appendChild(e)
+			index_elements.push(e)
+			//e.addEventListener("click", function() {
+			//    window.scrollTo(c.getBoundingClientRect().x, c.getBoundingClientRect().y);
+			//})
+
+			if (c.tagName == "H3") {
+				e.className = "sub"
+			}
+
 		}
 
+		index_elementss.push(index_elements)
 	}
 }
 
@@ -84,49 +93,51 @@ function onscroll() {
 		return rect.top <= 1;
 	}
 
-	for (let is in index_elements) {
-		let i = parseInt(is);
-		let e = index_elements[i];
+	for (let index_elements of index_elementss) {
+		for (let is in index_elements) {
+			let i = parseInt(is);
+			let e = index_elements[i];
 
-		/**
-		 * @param {HTMLElement} elm
-		 * @param { "active" | "slightly-active" | "none" } attr
-		 */
-		function setAttr(elm, attr) {
-			if (attr != "none") {
-				elm.setAttribute(attr, true);
+			/**
+			 * @param {HTMLElement} elm
+			 * @param { "active" | "slightly-active" | "none" } attr
+			 */
+			function setAttr(elm, attr) {
+				if (attr != "none") {
+					elm.setAttribute(attr, true);
+				}
+
+				if (attr != "active") {
+					elm.removeAttribute("active");
+				}
+
+				if (attr != "slightly-active") {
+					elm.removeAttribute("slightly-active");
+				}
 			}
 
-			if (attr != "active") {
-				elm.removeAttribute("active");
-			}
-
-			if (attr != "slightly-active") {
-				elm.removeAttribute("slightly-active");
-			}
-		}
-
-		if (checkVisible(e.data_element)) {
-			setAttr(e, "active");
-			continue;
-		}
-
-		// if last element
-		if (i == index_elements.length - 1) {
-			if (checkAbove(e.data_element)) {
+			if (checkVisible(e.data_element)) {
 				setAttr(e, "active");
-			} else {
-				setAttr(e, "none");
+				continue;
 			}
-			continue;
-		}
 
-		if (checkAbove(e.data_element) && !checkAboveOrSlightlyAbove(index_elements[i + 1].data_element)) {
-			setAttr(e, "slightly-active");
-			continue;
-		}
+			// if last element
+			if (i == index_elements.length - 1) {
+				if (checkAbove(e.data_element)) {
+					setAttr(e, "active");
+				} else {
+					setAttr(e, "none");
+				}
+				continue;
+			}
 
-		setAttr(e, "none");
+			if (checkAbove(e.data_element) && !checkAboveOrSlightlyAbove(index_elements[i + 1].data_element)) {
+				setAttr(e, "slightly-active");
+				continue;
+			}
+
+			setAttr(e, "none");
+		}
 	}
 
 	/*for (let e of index_elements) {

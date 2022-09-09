@@ -162,3 +162,8 @@ $$
 T \simeq \exp\left(- \frac{1}{\hbar} \int_0^d\sqrt{2m(U(x) - E)}\right) = e^{- \frac{d}{\hbar} \sqrt{2m(U_0 - E)}}
 $$
 
+![immagine!](./../../../../../img/logo.png)
+
+!!!include(a.md)!!!
+
+<script type="module" src="/js/latex_convertex.js"></script>

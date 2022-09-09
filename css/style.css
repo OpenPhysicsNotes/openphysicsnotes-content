@@ -221,16 +221,25 @@ lc-content {
 }
 
 lc-nav-index {
-    grid-column: last-start / last-end;
-    grid-row: 1/2;
     list-style-type: none;
     display: block;
     
     font-size: 85%;
 }
-lc-nav-index > aside {
+.in-nav-index {
+    display: none;
+}
+.out-nav-index-container {
+    grid-column: last-start / last-end;
+    grid-row: 1/2;
+}
+.out-nav-index-container > lc-nav-index.out-nav-index {
     top: 0;
     position: sticky;
+}
+lc-nav-index > aside {
+    /*top: 0;
+    position: sticky;*/
 }
 lc-nav-index > aside > li {
     border: none;
@@ -256,7 +265,8 @@ lc-nav-index > aside > li.sub {
 }
 
 lc-nav-index > aside {
-    max-height: 80vh;
+    /*max-height: 80vh;*/
+    max-height: 30em;
 }
 
 lc-nav-index > aside a, lc-nav-index > aside a:visited,
@@ -291,18 +301,37 @@ article {
         --right-sidebar-width: 0;
     }
     lc-content {
-        grid-template-rows: 50vh auto;
+        /*grid-template-rows: 50vh auto;*/
+        grid-template-rows: auto;
     }
     lc-sidebar, lc-nav-index > aside {
-        max-height: 40vh;
-        overflow: auto;
-    }
-    lc-nav-index {
-        grid-column: first-start / first-end;
-        grid-row: 2 / 3;
+        /*max-height: 40vh;*/
+        /*overflow: auto;*/
+        /*overflow: hidden;*/
+        /*overflow: unset;*/
     }
     lc-sidebar {
-        grid-row: 1 / 2;
+        overflow: unset;
+    }
+    /*lc-nav-index {
+        grid-column: first-start / first-end;
+        grid-row: 2 / 3;
+    }*/
+    .in-nav-index {
+        /*background-color: aquamarine;*/
+        position: sticky;
+        /*color: red;*/
+        display: block;
+        top: 0px;
+        /*height: 100%;*/
+        /*display: block;
+        max-height: 10em;*/
+    }
+    lc-nav-index.out-nav-index {
+        display: none;
+    }
+    lc-sidebar {
+        grid-row: 1 / 3;
     }
     article {
         grid-row: 1 / 3;
@@ -615,7 +644,9 @@ div[class*="squared-"] {
 }
 
 .strike-through, .strikeout, .sout, .strikethrough, .st,
-[class*="strike-through-"], [class*="strikeout-"], [class*="sout-"], [class*="strikethrough-"], [class*="st-"] {
+[class*="strike-through-"], [class*="strikeout-"], [class*="sout-"], [class*="strikethrough-"]
+/*, [class*="st-"] causes issues with "skip-1st-line" */
+{
     text-decoration: line-through;
 }
 
@@ -886,8 +917,12 @@ article > img, article > p > img {
     body > * {
         display: none;
     }
+    body {
+        background: transparent;
+    }
     :root {
         --text_color: black;
+        --paper_color: transparent;
     }
     lc-content {
         display: block;

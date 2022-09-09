@@ -42,7 +42,7 @@ related_articles:
     - title: Cheatsheet
       url: ./cheatsheet/
     - title: Quantum Mechanics
-      href: ./QM/
+      href: ./study_plans/df.unipi/courses/QM
 
 # use this to change the default favicon image
 #favicon: /logo.png

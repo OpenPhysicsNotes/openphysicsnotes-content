@@ -2,35 +2,43 @@
 title: Markdown syntax @ OPN
 
 description: A description of the markdown syntax
+
+related_articles:
+    - title: meta section
+      url: ./meta_section.md
 ---
 
 # Markdown syntax :arrow_down:
 
 Table of content:
-- [Metadata section](#metadata-section)
-- [Document section](#document-section)
-- [Markdown features](#markdown-features)
-  - [Headings](#headings)
-    - [Heading links](#heading-links)
-  - [New Lines](#new-lines)
-  - [Paragraphs](#paragraphs)
-  - [Horizontal lines](#horizontal-lines)
-  - [Strong, italics, decorations and colors](#strong-italics-decorations-and-colors)
-  - [Links, images, figures and refs](#links-images-figures-and-refs)
-    - [Link](#link)
-  - [Lists](#lists)
-  - [Attributes](#attributes)
-  - [Footnotes](#footnotes)
-  - [Emoji](#emoji)
-  - [Math](#math)
-  - [Code](#code)
-  - [Boxes](#boxes)
-  - [`iframe`](#iframe)
-  - [Animations](#animations)
-  - [Plots](#plots)
-    - [Plots using *Desmos*](#plots-using-desmos)
-- [Additional notes](#additional-notes)
-  - [table of content](#table-of-content)
+- [Markdown syntax :arrow_down:](#markdown-syntax-arrow_down)
+  - [Metadata section](#metadata-section)
+  - [Document section](#document-section)
+  - [Markdown features](#markdown-features)
+    - [Headings](#headings)
+      - [Heading links](#heading-links)
+    - [New Lines](#new-lines)
+    - [Paragraphs](#paragraphs)
+    - [Horizontal lines](#horizontal-lines)
+    - [Strong, italics, decorations and colors](#strong-italics-decorations-and-colors)
+    - [Links, images, figures and refs](#links-images-figures-and-refs)
+      - [Link](#link)
+    - [Lists](#lists)
+    - [Attributes](#attributes)
+    - [Footnotes](#footnotes)
+    - [Emoji](#emoji)
+    - [Math](#math)
+    - [Code](#code)
+      - [Inline code](#inline-code)
+      - [Code block](#code-block)
+      - [Syntax highlighting](#syntax-highlighting)
+    - [Boxes](#boxes)
+    - [`iframe`](#iframe)
+    - [Animations](#animations)
+    - [Plots](#plots)
+      - [Plots using *Desmos*](#plots-using-desmos)
+  - [Additional notes](#additional-notes)
+    - [table of content](#table-of-content)
 
 ::: todo
 auto table of contents element?
