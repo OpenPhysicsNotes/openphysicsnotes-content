@@ -17,5 +17,6 @@
         "mathbf",
         "mathcal"
     ],
-    "cSpell.language": "en,it"
+    "cSpell.language": "en,it",
+    "svg.preview.background": "transparent"
 }
