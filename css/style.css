@@ -28,6 +28,7 @@ https://fonts.google.com/specimen/Inter
     --header-color: transparent;
 
     --text_color: rgb(220, 220, 220);
+    /*--text_color: red;*/
 
     /* !!! */
 
@@ -93,7 +94,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 
-    color: white;
+    /*color: white;*/
     color: var(--text_color);
     /*font-family: 'Times New Roman', Times, serif;*/
     font-family: sans-serif;
@@ -493,6 +494,13 @@ article details summary {
     cursor: pointer;
 }
 
+/*do not print closed details*/
+@media print {
+    article details:not([open]) {
+        display: none;
+    }
+}
+
 @keyframes target-fade {
 	from { background-color: cyan}
 	to { background-color: transparent; }
@@ -555,13 +563,23 @@ https://codepen.io/otwm/pen/yLLwvJz
 
 p, article .p, article .paragraph {
     display: block;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    /*padding-top: 0.5em;
+    padding-bottom: 0.5em;*/
+
+    --top-bottom-margin: 0.5em;
+    margin-top: var(--top-bottom-margin);
+    margin-bottom: var(--top-bottom-margin);
+    /*margin: initial;*/
+
+    /* https://www.w3schools.com/cssref/css3_pr_text-justify.asp */
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 p::before, article .p::before, article .paragraph::before {
     content: "";
     padding-right: 0.25em;
+    padding-right: 0.5em;
 }
 
 lc-figure-a {
@@ -615,6 +633,83 @@ lc-figure.float.left {
 }
 lc-figure.float.right {
     float: right;
+}
+
+/* TODO auto? */
+.float {
+    float: right;
+}
+.float-left {
+    float: left;
+}
+.float-right {
+    float: right;
+}
+
+.float, .float-left, .float-right {
+    margin: 0.5em;
+    max-width: 50%;
+}
+
+.max-width-05 {
+    max-width: 5%;
+}
+.max-width-10 {
+    max-width: 10%;
+}
+.max-width-15 {
+    max-width: 15%;
+}
+.max-width-20 {
+    max-width: 20%;
+}
+.max-width-25 {
+    max-width: 25%;
+}
+.max-width-30 {
+    max-width: 30%;
+}
+.max-width-35 {
+    max-width: 35%;
+}
+.max-width-40 {
+    max-width: 40%;
+}
+.max-width-45 {
+    max-width: 45%;
+}
+.max-width-50 {
+    max-width: 50%;
+}
+.max-width-55 {
+    max-width: 55%;
+}
+.max-width-60 {
+    max-width: 60%;
+}
+.max-width-65 {
+    max-width: 65%;
+}
+.max-width-70 {
+    max-width: 70%;
+}
+.max-width-75 {
+    max-width: 75%;
+}
+.max-width-80 {
+    max-width: 80%;
+}
+.max-width-85 {
+    max-width: 85%;
+}
+.max-width-90 {
+    max-width: 90%;
+}
+.max-width-95 {
+    max-width: 95%;
+}
+.max-width-100 {
+    max-width: 100%;
 }
 
 .circled,
@@ -952,4 +1047,74 @@ article > img, article > p > img {
     lc-content {
         grid-row: 2 / 3;
     }
+
+    .no-print {
+        display: none;
+    }
+}
+
+figure {
+    margin: auto;
+    max-width: 85%;
+    width: fit-content;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    border: 1px solid gray;
+    box-sizing: border-box;
+}
+figure img {
+    display: block;
+    max-width: 100%;
+    margin: auto;
+}
+
+figcaption {
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+table {
+    border-collapse: collapse;
+    /*border: 1px solid gray;*/
+    margin: auto;
+    max-width: 85%;
+    width: fit-content;
+}
+
+table thead {
+    background: rgba(128, 128, 128, 0.1);
+}
+table tbody {
+    background: rgba(128, 128, 128, 0.05);
+}
+
+table td, table th {
+    border: 1px solid gray;
+    padding: 0.5em;
+}
+
+table th {
+    border-bottom: 2px solid gray;
+}
+
+.font-relative-size-0-25 {
+    font-size: 0.25em;
+}
+.font-relative-size-0-50 {
+    font-size: 0.5em;
+}
+.font-relative-size-0-75 {
+    font-size: 0.75em;
+}
+.font-relative-size-1-25 {
+    font-size: 1.25em;
+}
+.font-relative-size-1-50 {
+    font-size: 1.5em;
+}
+.font-relative-size-2 {
+    font-size: 2em;
+}
+.font-relative-size-3 {
+    font-size: 3em;
 }

@@ -1,7 +1,7 @@
 
 
 lc-note, lc-solution, lc-todo, lc-warning,
-lc-def {
+lc-def, lc-tip {
     --rgb_color : 43, 226, 43;
     display: block;
 
@@ -18,23 +18,27 @@ lc-def {
 
 @media print {
     lc-note, lc-solution, lc-todo, lc-warning,
-    lc-def {
+    lc-def, lc-tip {
         --rgb_color: 0, 128, 0
+    }
+
+    lc-todo {
+        display: none;
     }
 }
 
 lc-note > p:first-of-type, lc-solution > p:first-of-type, lc-todo > p:first-of-type, lc-warning > p:first-of-type,
-lc-def > p:first-of-type {
+lc-def > p:first-of-type, lc-tip > p:first-of-type {
     display: inline;
 }
 
 lc-note > p:first-of-type::before, lc-solution > p:first-of-type::before, lc-todo > p:first-of-type::before, lc-warning > p:first-of-type::before,
-lc-def > p:first-of-type::before {
+lc-def > p:first-of-type::before, lc-tip > p:first-of-type::before {
     content: none;
 }
 
 lc-note::before, lc-solution::before, lc-todo::before, lc-warning::before,
-lc-def::before {
+lc-def::before, lc-tip::before {
     /*color: rgb(var(--rgb_color));*/
     font-weight: bold;
     content: "<< undef >>";
@@ -66,6 +70,10 @@ lc-todo::before {
 
 lc-def::before {
     content: "Def:";
+}
+
+lc-tip::before {
+    content: "\1F6C8\FE0F  TIP:";
 }
 
 blockquote {

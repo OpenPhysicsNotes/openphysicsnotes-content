@@ -181,6 +181,12 @@ code-string, code .string,
     color: rgb(214, 157, 122);
 }
 
+.hljs-subst {
+    text-decoration: none;
+    color: gray;
+    color: rgb(207, 168, 144);;
+}
+
 code-comment, code .comment,
 .hljs-comment {
     text-decoration: none;
@@ -323,4 +329,9 @@ code .language-xml {
     text-decoration: none;
     color: inherit;
     font-style: italic;
+}
+
+
+pre.scroll {
+    max-height: 20em;
 }
