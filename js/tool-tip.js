@@ -1,3 +1,10 @@
+
+window.tooltipCfg = {
+	// times
+	showDelay: 2000,
+	hideDelay: 1000,
+}
+
 class ToolTipElement extends HTMLElement {
 	constructor() {
 		super();
@@ -10,7 +17,7 @@ class ToolTipElement extends HTMLElement {
 			setTimeout(() => {
 				//this.tt.setAttribute('visible', '');
 				this.showTooltip();
-			}, 1000);
+			}, window.tooltipCfg.showDelay);
 		});
 
 		// after 1s of hover, show the tooltip
@@ -20,7 +27,7 @@ class ToolTipElement extends HTMLElement {
 				//this.tt.removeAttribute('visible');
 				//this.showTooltip();
 				this.hideTooltip();
-			}, 1000);
+			}, window.tooltipCfg.hideDelay);
 		});
 		//this.addEventListener('mouseenter', this.showTooltip);
 		//this.addEventListener('mouseleave', this.hideTooltip);
