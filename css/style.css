@@ -6,6 +6,7 @@ https://fonts.google.com/specimen/Inter
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300&display=swap');
 @import url('./code.css');
 @import url('./boxes.css');
+@import url('./tool-tip.css');
 
 /* see https://developer.mozilla.org/en-US/docs/Web/API/Document/scroll_event#specifications */
 :root {
@@ -730,6 +731,41 @@ div[class*="squared-"] {
     margin: 0.5em;
 }
 
+/* TODO move!!! */
+/*tex-math {
+    /*border: solid 5px gray;* /
+    margin: auto;
+    max-width: 100%;
+    min-width: 20%;
+    width: fit-content;
+    display: block;
+}
+tex-math[class*="squared"] {
+    padding: 0.25em;
+}*/
+
+/* TODO move!!! */
+.width-05 { width: 5%; }
+.width-10 { width: 10%; }
+.width-15 { width: 15%; }
+.width-20 { width: 20%; }
+.width-25 { width: 25%; }
+.width-30 { width: 30%; }
+.width-35 { width: 35%; }
+.width-40 { width: 40%; }
+.width-45 { width: 45%; }
+.width-50 { width: 50%; }
+.width-55 { width: 55%; }
+.width-60 { width: 60%; }
+.width-65 { width: 65%; }
+.width-70 { width: 70%; }
+.width-75 { width: 75%; }
+.width-80 { width: 80%; }
+.width-85 { width: 85%; }
+.width-90 { width: 90%; }
+.width-95 { width: 95%; }
+.width-100 { width: 100%; }
+
 .underlined,
 [class*="underlined-"] {
     /*border-bottom: 1px solid gray;*/
@@ -1117,4 +1153,9 @@ table th {
 }
 .font-relative-size-3 {
     font-size: 3em;
+}
+
+
+lc-defs {
+    display: none;
 }

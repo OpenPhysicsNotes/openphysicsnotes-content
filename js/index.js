@@ -1,3 +1,4 @@
+// @ts-check
 
 var index_elementss = []
 
@@ -6,6 +7,7 @@ var id_counter = 0
 /**
  * creates an incremental id
  * @returns {string}
+ * @param {string} prefix
  */
 function make_id() {
 	return "tmp_ID_" + (id_counter++).toString()
@@ -14,10 +16,54 @@ function make_id() {
 /**
  * 
  * @param {HTMLElement} element 
+ * @returns {string}
  */
 function element_id(element) {
 	if (element.id.length <= 0) {
 		element.id = make_id()
+	}
+	return element.id;
+}
+
+/**
+ * @type { Set<string> }
+ */
+var used_headings_ids = new Set();
+
+/**
+ * 
+ * @param {HTMLElement} element 
+ * @returns {string}
+ */
+ function heading_id(element) {
+	if (element.id.length <= 0) {
+		// get the text of the heading
+		let text = element.innerText;
+		// remove all non alphanumeric characters but keep spaces
+		text = text.replace(/[^a-zA-Z0-9 ]/g, "");
+		// replace spaces with dashes, if multiple spaces are present, replace them with a single dash
+		text = text.replace(/ +/g, "-");
+		// make it lowercase
+		text = text.toLowerCase();
+		
+		let counter = 0;
+		let id = text;
+		while (used_headings_ids.has(id)) {
+			counter++;
+			id = text + "-" + counter.toString();
+		}
+		used_headings_ids.add(id);
+		element.id = id;
+
+		// place all the content of the heading in a link
+		let link = document.createElement("a");
+		link.setAttribute("href", "#" + id);
+		// move all the children of the heading to the link
+		while (element.firstChild) {
+			link.appendChild(element.firstChild);
+		}
+		// add the link to the heading
+		element.appendChild(link);
 	}
 	return element.id;
 }
@@ -50,7 +96,7 @@ function make_index() {
 			a = document.createElement("a")
 			e.appendChild(a)
 			a.innerHTML = c.innerHTML
-			a.setAttribute("href", "#" + element_id(c))
+			a.setAttribute("href", "#" + heading_id(c))
 			e.data_element = c
 			c.data_index_element = e
 			index_a.appendChild(e)
@@ -276,3 +322,75 @@ let view_source_link = document.getElementById("view-source-link");
 if (view_source_link) {
 	view_source_link.href = `javascript:show_view_source();`;
 }
+
+
+function escape_html(str) {
+	return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+}
+
+/**
+ * 
+ * @param {string} id 
+ * @param {string} url 
+ * @param {string} language
+ */
+function fetch_code(id, url, language = "") {
+	fetch(url)
+		.then(response => response.text())
+		.then(text => {
+			let code = document.getElementById(id);
+			code.innerHTML = escape_html(text);
+			code.className = language ? "language-" + language : "no-highlight";
+			hljs.highlightElement(code);
+		});
+}
+
+// all elements with "lc-code-src" attribute
+document.querySelectorAll("[lc-code-src]").forEach(e => {
+	let url = e.getAttribute("lc-code-src");
+	let _class = e.getAttribute("class");
+	console.log(e);
+	fetch(url)
+		.then(async response => {
+			let code = e;
+			if (response.ok) {
+				return await response.text();
+			} else {
+				code.className = "no-highlight";
+				code.innerHTML = '<b style="color:red">error: ' + response.status + " " + response.statusText + "\nurl: " + url + "</b>";
+				//code.innerHTML = "ERROR: " + response.status + " " + response.statusText;
+				//throw new Error("HTTP error " + response.status);
+				return undefined;
+			}
+		})
+		.then(text => {
+			if (!text)
+				return;
+			let code = e;
+			console.log(code);
+			code.innerHTML = escape_html(text);
+			code.className = _class;
+			hljs.highlightElement(code);
+		});
+});
+
+function lc_use() {
+	let lc_uses = document.querySelectorAll("lc-use");
+	lc_uses.forEach(e => {
+		if (e.hasAttribute("ref")) {
+			let ref = e.getAttribute("ref");
+			if (ref) {
+				if (ref.startsWith("#")) ref = ref.substring(1);
+				let ref_element = document.getElementById(ref);
+				if (ref_element) {
+					let fragment = document.createDocumentFragment();
+					for (let i = 0; i < ref_element.children.length; i++) {
+						fragment.appendChild(ref_element.children[i].cloneNode(true));
+					}
+					e.parentNode?.replaceChild(fragment, e);
+				}
+			}
+		}
+	});
+}
+lc_use();

@@ -139,7 +139,7 @@ code-macro, code .macro-name{
     color: rgb(190, 183, 255);
 }
 
-code-concept, code-class, code .class-name,
+code-concept, code-class, code-enum, code-typedef, code .class-name,
 .hljs-title.class_,
 .hljs-selector-class/*not this! use VSCode style*/ {
     text-decoration: none;
