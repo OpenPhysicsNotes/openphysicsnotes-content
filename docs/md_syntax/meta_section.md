@@ -181,29 +181,3 @@ https://stackoverflow.com/questions/36333978/
 
 error-permission-denied-to-access-property-document
 :::
-
-## elimina
-## elimina
-## elimina
-## elimina
-## elimina
-## elimina
-## elimina
-## elimina
-## elimina
-## elimina
-## elimina
-## elimina
-## elimina
-## elimina
-## elimina
-## elimina
-## elimina
-## elimina
-## elimina
-## elimina
-## elimina
-## elimina
-## elimina
-## elimina
-## elimina

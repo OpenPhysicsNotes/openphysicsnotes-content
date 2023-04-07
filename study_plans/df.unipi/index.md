@@ -4,6 +4,8 @@ title: Physics @ unipi @ OPN
 
 # Physics @ unipi
 
+**[Courses list](./courses/)**
+
 ## Triennale
 
 ### 1^st^ year

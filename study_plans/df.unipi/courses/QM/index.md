@@ -3,8 +3,8 @@ title: Quantum Mechanics
 related_articles:
     - title: Quantum Wave Function ans Operators
       url: "./wavefunction"
-    - title: formulario
-      url: ./formulario
+    - title: formulary
+      url: ./formulary
 ---
 
 # Quantum Mechanics

@@ -6,9 +6,12 @@
         "eigenstates",
         "Hellmann",
         "netname",
+        "omotopo",
         "openphysicsnotes",
         "qrcode",
         "studentifisicapisa",
+        "Wavefunction",
+        "Weyl",
         "widetilde"
     ],
     "cSpell.ignoreWords": [

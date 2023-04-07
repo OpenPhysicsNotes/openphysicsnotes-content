@@ -107,6 +107,10 @@ iframe.onload = () => {
 iframe.contentWindow.onload();
 </script>
 
+<iframe src="/drive/blob/now/tsconfig.json" width="100%" style="box-sizing: border-box; background:white;"></iframe>
+
+[tsconfig.json](/drive/blob/now/tsconfig.json)
+
 # Open Physics Notes
 
 ![a](./img/logo.png)
@@ -163,3 +167,5 @@ https://www.paypal.com/paypalme/LucaCiucci99
 <img src="./img/logo.png" alt="logo" slot="graphics" />
 <span slot="caption">caption</span>
 </lc-figure>
+
+aaa

@@ -1,0 +1,49 @@
+
+
+@pagea {
+    size: A3 landscape;
+}
+
+
+p::before {
+    padding-right: 0.5em;
+}
+
+
+@media all {
+    /*p {
+        color: red;
+    }*/
+}
+
+
+@page: right {
+    @bottom-right {
+        content: counter(page);
+    }
+}
+
+@page: left {
+    @bottom-left {
+        content: counter(page);
+    }
+}
+
+article {
+    counter-reset: my-page;
+}
+
+@page {
+    @bottom-left {
+        content: "ciao a tutti"
+    }
+    color: red;
+}
+
+footnote::footnote {
+    float: footnote;
+}
+
+article p::before {
+    content: "page " counter(page) " ";
+}
